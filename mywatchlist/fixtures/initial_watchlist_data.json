@@ -1,0 +1,112 @@
+[
+  {
+    "model": "mywatchlist.watchlist",
+    "pk": 1,
+    "fields": {
+      "watched": true,
+      "title": "Big Hero 6",
+      "rating": 8,
+      "release_date": "2022-09-01",
+      "review": "Bagus aja"
+    }
+  },
+  {
+    "model": "mywatchlist.watchlist",
+    "pk": 2,
+    "fields": {
+      "watched": false,
+      "title": "Black Widow",
+      "rating": 9,
+      "release_date": "2022-09-03",
+      "review": "belum nonton"
+    }
+  },
+  {
+    "model": "mywatchlist.watchlist",
+    "pk": 3,
+    "fields": {
+      "watched": true,
+      "title": "Logan",
+      "rating": 9,
+      "release_date": "2022-08-11",
+      "review": "Filmnya bagus ada wolverine"
+    }
+  },
+  {
+    "model": "mywatchlist.watchlist",
+    "pk": 4,
+    "fields": {
+      "watched": true,
+      "title": "Janji jiwa",
+      "rating": 3,
+      "release_date": "2022-09-11",
+      "review": "Namanya mirip kopi"
+    }
+  },
+  {
+    "model": "mywatchlist.watchlist",
+    "pk": 5,
+    "fields": {
+      "watched": false,
+      "title": "Lain dari kamu",
+      "rating": 3,
+      "release_date": "2022-09-20",
+      "review": "Katanya jelek"
+    }
+  },
+  {
+    "model": "mywatchlist.watchlist",
+    "pk": 6,
+    "fields": {
+      "watched": false,
+      "title": "Ganteng-ganteng Slime",
+      "rating": 9,
+      "release_date": "2022-09-17",
+      "review": "MC-nya kulbet"
+    }
+  },
+  {
+    "model": "mywatchlist.watchlist",
+    "pk": 7,
+    "fields": {
+      "watched": true,
+      "title": "Isekai avanza",
+      "rating": 10,
+      "release_date": "2022-08-11",
+      "review": "Plotnya keren dan actionnya dapet"
+    }
+  },
+  {
+    "model": "mywatchlist.watchlist",
+    "pk": 8,
+    "fields": {
+      "watched": false,
+      "title": "Butuh cinta",
+      "rating": 3,
+      "release_date": "2022-09-04",
+      "review": "Terlalu geli"
+    }
+  },
+  {
+    "model": "mywatchlist.watchlist",
+    "pk": 9,
+    "fields": {
+      "watched": true,
+      "title": "One piece 1000",
+      "rating": 10,
+      "release_date": "2022-09-30",
+      "review": "Bagus si cuma kapan kelarnya ?"
+    }
+  },
+  {
+    "model": "mywatchlist.watchlist",
+    "pk": 10,
+    "fields": {
+      "watched": false,
+      "title": "Avengers: its morbin time",
+      "rating": 10,
+      "release_date": "2022-09-17",
+      "review": "10/10 must watch"
+    }
+  }
+]

@@ -21,7 +21,7 @@ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
 4. Menambahkan minimal 10 data untuk objek MyWatchList yang sudah dibuat di atas
     Saya menggunakan django admin untuk menambahkan data secara manual kedalam projek lalu saya mengambil keluaran json dari data tersebut dan memasukkannya kedalam initial_watchlist_data.json sebagai data awal. Untuk pengaplikasian django admin saya mengikuti langkah dari : https://www.tutorialspoint.com/adding-json-field-in-django-models
 5. Mengimplementasikan sebuah fitur untuk menyajikan data di poin 4 dalam tiga format:
-    Untuk checklist ini saya mengikuti tutorial lab 2 untuk membuat fungsi yang disesuaikan kembali dengan apa yang ingin kita return menggunakan HttpResponse untuk mengembalikan views yang ingin dilihat. Semua fungsi yang telah dibuat akan dimasukkan ke dalam views.py app mywatchlist.
+    Untuk checklist ini saya mengikuti tutorial lab 2 untuk membuat fungsi yang disesuaikan kembali dengan apa yang ingin kita return menggunakan HttpResponse untuk mengembalikan views yang ingin dilihat. Semua fungsi yang telah dibuat akan dimasukkan ke dalam views.py app mywatchlist. Menggunakan referensi berikut untuk conditionals HTML : https://retentionscience.zendesk.com/hc/en-us/articles/115003025814-How-To-Build-HTML-for-Conditional-Statements
 6. Membuat routing sehingga data di atas dapat diakses melalui URL.
     Untuk checklist ini kembali saya menggunakan tutorial lab 2 sebagai landasan saya. Saya menambahkan routing pada urls.py app mywatchlist seperti html/ , xml/ , dan json/ untuk memanggil fungsi yang sesuai dari views.py.
 7. Melakukan deployment ke Heroku terhadap aplikasi yang sudah kamu buat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.

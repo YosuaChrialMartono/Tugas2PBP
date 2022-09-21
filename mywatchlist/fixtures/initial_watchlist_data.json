@@ -36,7 +36,7 @@
     "model": "mywatchlist.watchlist",
     "pk": 4,
     "fields": {
-      "watched": true,
+      "watched": false,
       "title": "Janji jiwa",
       "rating": 3,
       "release_date": "2022-09-11",

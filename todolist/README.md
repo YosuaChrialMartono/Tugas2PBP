@@ -7,17 +7,27 @@
 - [https://stackoverflow.com/questions/49183234/how-to-post-data-of-logged-in-user-with-a-form-in-django](https://stackoverflow.com/questions/49183234/how-to-post-data-of-logged-in-user-with-a-form-in-django)
 - [https://docs.djangoproject.com/en/4.1/topics/db/queries/](https://docs.djangoproject.com/en/4.1/topics/db/queries/)
 - [https://stackoverflow.com/questions/311188/how-do-i-edit-and-delete-data-in-django](https://stackoverflow.com/questions/311188/how-do-i-edit-and-delete-data-in-django)
+- [Tutorial Lab 3 PBP](https://pbp-fasilkom-ui.github.io/ganjil-2023/assignments/tutorial/tutorial-3/)
 
 # Pertanyaan
 
 ### 1. Apa kegunaan {% csrf_token %} pada elemen <form>? Apa yang terjadi apabila tidak ada potongan kode tersebut pada elemen <form>?
-
+CSRF (Cross Site Request Forgery) adalah bentuk perlindungan django pada serangan melalui request. Dikutip dari [owasp.org](https://owasp.org/www-community/attacks/csrf) serangan ini dapat mengakibatkan kerusakan yang cukup signifikan bila mengenai user dan mungkin fatal apabila mengenai akun administratif. Ia bekerja dengan membuat sebuah token random yang akan dicocokan dengan token pengirim request. Apabila tidak ada potongan kode ini di dalam elemen <form> maka request kita tidak akan mengirimkan token sehingga tidak akan dilakukan.
 
 ### 2. Apakah kita dapat membuat elemen <form> secara manual (tanpa menggunakan generator seperti {{ form.as_table }})? Jelaskan secara gambaran besar bagaimana cara membuat <form> secara manual.
-
-
+Ya, melalui [referensi](https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html) yang saya gunakan untuk mengerjakan tugas ini dijelaskan bahwa ada banyak sekali cara untuk menampilkan form dan cara kita membuatnya sangatlah fleksibel. Salah satu caranya adalah dengan mengiterasi setiap field secara manual dan membuat semua attributes yang ingin kita letakkan kepada field tersebut.
 
 ### 3. Jelaskan proses alur data dari submisi yang dilakukan oleh pengguna melalui HTML form, penyimpanan data pada database, hingga munculnya data yang telah disimpan pada template HTML.
-
+![FLOW SS](/todolist/Flow.png)
+Mengacu kepada PPT 05 - Form, Authentication, Session, and Cookie Kelas PBP C 2022/2023 maka alurnya adalah sebagai berikut.
+    1. User memasukkan address untuk submisi.
+    2. Browser mengenerate http request kepada address tersebut.
+    3. Server menerima request tersebut dan memilih views yang tepat dan mengirimkannya kepada browser.
+    4. Browser menerima viewsnya dalam bentuk HTML dan menampilkannya kepada User.
+    5. User mengisi form sesuai dengan apa yang Ia dapatkan di browser.
+    6. Browser mengenerate http request untuk submisi dari user berdasarkan viewsnya kepada server.
+    7. Server menghandle request tersebut sesuai dengan apa yang diinginkan.
+    8. Server mengembalikan HTML view ke browser yang akan dilihat oleh user.
 
 ### 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+Saya mengimplementasikan checlist di atas dengan melakukan google serta bertanya ke teman-teman saya terutama Azhra Yasna Azka dengan npm 2106705291 yang mengarahkan saya ke dokumentasi yang tepat dan yang harus saya baca. Semua referensi yang saya gunakan telah di list di awal file.

@@ -20,14 +20,14 @@ Ya, melalui [referensi](https://simpleisbetterthancomplex.com/article/2017/08/19
 ### 3. Jelaskan proses alur data dari submisi yang dilakukan oleh pengguna melalui HTML form, penyimpanan data pada database, hingga munculnya data yang telah disimpan pada template HTML.
 ![FLOW SS](/todolist/Flow.png)
 Mengacu kepada PPT 05 - Form, Authentication, Session, and Cookie Kelas PBP C 2022/2023 maka alurnya adalah sebagai berikut.
-    1. User memasukkan address untuk submisi.
-    2. Browser mengenerate http request kepada address tersebut.
-    3. Server menerima request tersebut dan memilih views yang tepat dan mengirimkannya kepada browser.
-    4. Browser menerima viewsnya dalam bentuk HTML dan menampilkannya kepada User.
-    5. User mengisi form sesuai dengan apa yang Ia dapatkan di browser.
-    6. Browser mengenerate http request untuk submisi dari user berdasarkan viewsnya kepada server.
-    7. Server menghandle request tersebut sesuai dengan apa yang diinginkan.
-    8. Server mengembalikan HTML view ke browser yang akan dilihat oleh user.
+1. User memasukkan address untuk submisi.
+2. Browser mengenerate http request kepada address tersebut.
+3. Server menerima request tersebut dan memilih views yang tepat dan mengirimkannya kepada browser.
+4. Browser menerima viewsnya dalam bentuk HTML dan menampilkannya kepada User.
+5. User mengisi form sesuai dengan apa yang Ia dapatkan di browser.
+6. Browser mengenerate http request untuk submisi dari user berdasarkan viewsnya kepada server.
+7. Server menghandle request tersebut sesuai dengan apa yang diinginkan.
+8. Server mengembalikan HTML view ke browser yang akan dilihat oleh user.
 
 ### 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
 Saya mengimplementasikan checklist di atas dengan melakukan google serta bertanya ke teman-teman saya terutama Azhra Yasna Azka dengan npm 2106705291 yang mengarahkan saya ke dokumentasi yang tepat dan yang harus saya baca. Semua referensi yang saya gunakan telah di list di awal file. Untuk flownya sendiri saya membuat app baru dengan ```python manage.py startapp todolist``` lalu membuat model baru beserta formnya di models.py serta mengimportnya ke views.py untuk digunakan dalam fungsi ```create_task``` yang diberikan syarat login sesuai dengan tutorial lab 3. Function ```create_task``` tadi akan membawa kita ke forms model ```Task``` dan membuat request untuk menyimpan data yang kita input. Jika data yang kita inpud valid maka akan disave ke database dengan ```task_form.save()```. Setelah itu data baru kita akan ditampilkan di ```show_todolist()``` yang hanya akan menunjukkan user yang sesuai setelah data di model difilter.

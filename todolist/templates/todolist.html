@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+  <h1>Tugas 4 PBP</h1>
+
+  <h5>Logged in as: </h5>
+  <b>{{ user }}</b>
+
+  <h1></h1>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Is Finished</th>
+      <th>Change Status</th>
+    </tr>
+    {% comment %} Add the data below this line {% endcomment %}
+    {% for task in item_todolist %}
+    <tr>
+        <th>{{task.date}}</th>
+        <th>{{task.title}}</th>
+        <th>{{task.description}}</th>
+        <th>{{task.is_finished}}</th>
+        <th><button><a href="{}">Change Status</a></button></th>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <h5>Sesi terakhir login: {{ last_login }}</h5>
+  <button><a href="{% url 'todolist:create_task' %}">Create task</a></button>
+  <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+ {% endblock content %}

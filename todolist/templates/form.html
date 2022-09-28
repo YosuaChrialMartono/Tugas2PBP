@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <table border="1">
+        {{ task_form }}
+    </table>
+    <button type="submit">Submit</button>  
+    <button type="reset">Reset</button>
+    <button><a href="{% url 'todolist:show_todolist' %}">Cancel</a></button>
+</form>
+{% endblock content %}
+

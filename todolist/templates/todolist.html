@@ -19,16 +19,16 @@
   <body>
     {% block content %}
     <div id="main">
-      <div class="container-fluid">
+      <div class="container-fluid p-0 ">
         <nav
           class="navbar sticky-top navbar-light"
           style="background-color: burlywood"
         >
-          <div class="float-left">
+          <div class="float-left mx-4">
             <h1>Tugas 4 PBP</h1>
             <h5>Logged in as : {{user}}</h5>
           </div>
-          <div class="float-right">
+          <div class="float-right mx-4">
             <a
               class="btn btn-primary"
               href="{% url 'todolist:create_task' %}"
@@ -48,8 +48,8 @@
 
       <div class="row">
         {% for task in item_todolist %}
-        <div class="col-sm-3">
-          <div class="card" style="width: 18rem">
+        <div class="col-lg-3 col-md-5 col-sm-6 col-11">
+          <div class="card mx-auto m-3" style="width: 18rem">
             <div class="card-header">
               <b>{{task.title}}</b>
             </div>

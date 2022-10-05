@@ -1,18 +1,32 @@
-{% extends 'base.html' %}
-
-{% block meta %}
-<title>Login</title>
-{% endblock meta %}
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            />
+        <title>Login</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+            crossorigin="anonymous"
+            />
+    </head>
 
 {% block content %}
 
-<div class = "login">
-
-    <h1>Login</h1>
+<div class = "login" >
+<div class="d-flex align-items-center flex-column bd-highlight " style="height: 200px;">
+    <h1 class="mx-4 mt-3">Login</h1>
 
     <form method="POST" action="">
         {% csrf_token %}
-        <table>
+        <table class="align-self-center d-flex justify-content-center m-4">
             <tr>
                 <td>Username: </td>
                 <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
@@ -22,12 +36,9 @@
                 <td>Password: </td>
                 <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
             </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
+            <tr><td></td><td><button type="submit" class="btn login_btn btn-primary mx-auto">Login</button></td></tr>
         </table>
+        
     </form>
 
     {% if messages %}
@@ -37,9 +48,14 @@
             {% endfor %}
         </ul>
     {% endif %}     
-        
-    Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
-
+    
+    <p class="mx-4 mt-3 justify-content-center">Belum mempunyai akun? </p>
+    <a
+                class="btn btn-primary mx-4 justify-content-center"
+                href="{% url 'todolist:register' %}"
+                role="button">Buat Akun</a>
+            </div>
 </div>
 
 {% endblock content %}
+</html>

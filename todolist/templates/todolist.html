@@ -1,34 +1,81 @@
-{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Todolist</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    {% block content %}
+    <div id="main">
+      <div class="container-fluid">
+        <nav
+          class="navbar sticky-top navbar-light"
+          style="background-color: #e3f2fd"
+        >
+          <div class="float-left">
+            <h1>Tugas 4 PBP</h1>
+            <h5>Logged in as : {{user}}</h5>
+          </div>
+          <div class="float-right">
+            <a
+              class="btn btn-primary"
+              href="{% url 'todolist:create_task' %}"
+              role="button"
+              >Create task</a
+            >
+            <a
+              class="btn btn-primary"
+              href="{% url 'todolist:logout' %}"
+              role="button"
+              >Logout</a
+            >
+          </div>
+        </nav>
+      </div>
+      {% comment %} Add the data below this line {% endcomment %}
 
- {% block content %}
+      <div class="row">
+        {% for task in item_todolist %}
+        <div class="col-sm-3">
+          <div class="card" style="width: 18rem">
+            <div class="card-header">
+              <b>{{task.title}}</b>
+            </div>
 
-  <h1>Tugas 4 PBP</h1>
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">{{task.date}}</h6>
+              <p class="card-text">{{task.description}}</p>
+              {% if task.is_finished == True %}
+              <p class="card-text">Status : Finished</p>
+              {% else %}
+              <p class="card-text">Status : Not Finished</p>
+              {% endif %}
+              <button><a href="{}">Change Status</a></button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
 
-  <h5>Logged in as: </h5>
-  <b>{{ user }}</b>
-
-  <h1></h1>
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Is Finished</th>
-      <th>Change Status</th>
-    </tr>
-    {% comment %} Add the data below this line {% endcomment %}
-    {% for task in item_todolist %}
-    <tr>
-        <th>{{task.date}}</th>
-        <th>{{task.title}}</th>
-        <th>{{task.description}}</th>
-        <th>{{task.is_finished}}</th>
-        <th><button><a href="{}">Change Status</a></button></th>
-    </tr>
-    {% endfor %}
-  </table>
-
-  <h5>Sesi terakhir login: {{ last_login }}</h5>
-  <button><a href="{% url 'todolist:create_task' %}">Create task</a></button>
-  <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
- {% endblock content %}
+      <h5>Sesi terakhir login: {{ last_login }}</h5>
+    </div>
+    {% endblock content %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

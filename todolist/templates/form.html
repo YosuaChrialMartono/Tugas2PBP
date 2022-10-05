@@ -1,14 +1,79 @@
-{% extends 'base.html' %}
-
- {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <table border="1">
-        {{ task_form }}
-    </table>
-    <button type="submit">Submit</button>  
-    <button type="reset">Reset</button>
-    <button><a href="{% url 'todolist:show_todolist' %}">Cancel</a></button>
-</form>
-{% endblock content %}
-
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            />
+        <title>Create Task</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+            crossorigin="anonymous"
+            />
+    </head>
+    <body>
+        {% block content %}
+        <form method="POST">
+            {% csrf_token %} 
+            
+            {% if form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+              {% for error in form.non_field_errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          {% endif %}
+        
+          {% for field in form.visible_fields %}
+            <div class="form-group row">
+                <div class="col-sm-1 align-self-center d-flex justify-content-center">
+                {{ field.label_tag }}
+                </div>
+                <div class="col-sm-10 mb-4 mt-4">
+              {% if form.is_bound %}
+                {% if field.errors %}
+                  {% render_field field class="form-control is-invalid" %}
+                  {% for error in field.errors %}
+                    <div class="invalid-feedback">
+                      {{ error }}
+                    </div>
+                  {% endfor %}
+                {% else %}
+                  {% render_field field class="form-control is-valid" %}
+                {% endif %}
+              {% else %}
+                {% render_field field class="form-control" %}
+              {% endif %}
+        
+              {% if field.help_text %}
+                <small class="form-text text-muted">{{ field.help_text }}</small>
+              {% endif %}
+                </div>
+            </div>
+          {% endfor %}
+            <table class="align-self-center mr-3 d-flex justify-content-center">
+            <tr>
+            <td><button type="submit" class="btn btn-primary">Submit</button></td>
+            <td></td>
+            <td><button type="reset" class="btn btn-primary">Reset</button></td>
+            <td></td>
+            <td><a
+                class="btn btn-primary"
+                href="{% url 'todolist:show_todolist' %}"
+                role="button">Cancel</a></td>
+            </tr>
+            </table>
+        </form>
+        {% endblock content %}
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            crossorigin="anonymous"></script>
+    </body>
+</html>

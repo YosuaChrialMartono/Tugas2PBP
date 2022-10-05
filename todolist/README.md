@@ -31,3 +31,5 @@ Mengacu kepada PPT 05 - Form, Authentication, Session, and Cookie Kelas PBP C 20
 
 ### 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
 Saya mengimplementasikan checklist di atas dengan melakukan google serta bertanya ke teman-teman saya terutama Azhra Yasna Azka dengan npm 2106705291 yang mengarahkan saya ke dokumentasi yang tepat dan yang harus saya baca. Semua referensi yang saya gunakan telah di list di awal file. Untuk flownya sendiri saya membuat app baru dengan ```python manage.py startapp todolist``` lalu membuat model baru beserta formnya di models.py serta mengimportnya ke views.py untuk digunakan dalam fungsi ```create_task``` yang diberikan syarat login sesuai dengan tutorial lab 3. Function ```create_task``` tadi akan membawa kita ke forms model ```Task``` dan membuat request untuk menyimpan data yang kita input. Jika data yang kita inpud valid maka akan disave ke database dengan ```task_form.save()```. Setelah itu data baru kita akan ditampilkan di ```show_todolist()``` yang hanya akan menunjukkan user yang sesuai setelah data di model difilter.
+
+# Pertanyaan Tugas 5

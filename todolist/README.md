@@ -9,7 +9,7 @@
 - [https://stackoverflow.com/questions/311188/how-do-i-edit-and-delete-data-in-django](https://stackoverflow.com/questions/311188/how-do-i-edit-and-delete-data-in-django)
 - [Tutorial Lab 3 PBP](https://pbp-fasilkom-ui.github.io/ganjil-2023/assignments/tutorial/tutorial-3/)
 
-# Pertanyaan
+# Pertanyaan Tugas 4
 
 ### 1. Apa kegunaan {% csrf_token %} pada elemen <form>? Apa yang terjadi apabila tidak ada potongan kode tersebut pada elemen <form>?
 CSRF (Cross Site Request Forgery) adalah bentuk perlindungan django pada serangan melalui request. Dikutip dari [owasp.org](https://owasp.org/www-community/attacks/csrf) serangan ini dapat mengakibatkan kerusakan yang cukup signifikan bila mengenai user dan mungkin fatal apabila mengenai akun administratif. Ia bekerja dengan membuat sebuah token random yang akan dicocokan dengan token pengirim request. Apabila tidak ada potongan kode ini di dalam elemen <form> maka request kita tidak akan mengirimkan token sehingga tidak akan dilakukan.

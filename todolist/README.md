@@ -55,21 +55,22 @@ Selector yang saya ketahui ada tiga yakni :
 h1 {
   color: white;
   margin: 10px;
-}```
+}
+```
 2. ID Selector yang menerapkan style pada suatu tag yang kita berikan id tertentu. Misal kita memiliki div dengan id="Header" maka kita dapat menerapkan style dengan menggunakan #Header {}. Contoh :
  Code di Html
- ```html
+```html
  <div id="Header">
     ...
   </div>
-  ```
+```
  Code di CSS
- ```css
+```css
     #header {
     background-color: blue;
     margin: 0;
     }
- ```
+```
 3. Class Selector menerapkan style pada suatu class. Berbeda dengan ID selector Class selector diawali dengan `.` di dalam css. Untuk perbedannya sendiri tidak terlalu banyak tapi kita dapat menggunakan class selector untuk menerapkan framework lainnya seperti bootstrap untuk mempercantik kode kita.
 Contoh :
 Code di Html
@@ -91,7 +92,7 @@ Code di css
 ```
 ### 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
 
-Untuk checklist di atas saya menggunakan bootstrap sebagai landasan saya untuk memberikan style. Pertama-tama kita perlu mengimport stylesheet bootstrap ke dalam file HTML dengan memasukkan `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>` kedalam tag `<head>`.
+Untuk checklist di atas saya menggunakan bootstrap sebagai landasan saya untuk memberikan style. Pertama-tama kita perlu mengimport stylesheet bootstrap ke dalam file HTML dengan memasukkan link yang diperlukan kedalam tag `<head>`.
 Karena kita perlu untuk mengedit masing-masing field di dalam form maka kita perlu untuk merender masing-masing field secara manual, untuk hal tersebut saya menggunakan referensi [ini](https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html). Setelah dirender secara manual lalu kita dapat menerapkan style bootstrap pada masing-masing field. Saya membuat row untuk setiap field serta field tagnya lalu merapihkannya dengan margin dan juga ukuran kolomnya. 
 Untuk card sendiri saya membuat sebuah row untuk memuat jumlah card yang sesuai dengan media yang telah saya loop sehingga satu task akan membuat satu card. Card ini sendiri lalu saya terapkan style sesuai dengan apa yang bisa saya dapatkan dari bootstrap documentation.
 Untuk Responsive media saya menggunakan col-lg, col-md, col-sm, dan col sebagai class bootstrap yang akan mengatur panjangnya kolom saya sesuai dengan media yang sedang digunakan.

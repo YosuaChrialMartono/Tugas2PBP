@@ -50,7 +50,7 @@ Saya mengimplementasikan checklist di atas dengan melakukan google serta bertany
 
 ### 3. Jelaskan tipe-tipe CSS selector yang kamu ketahui.
 Selector yang saya ketahui ada tiga yakni :
-1. Element selector yang menerapkan style pada suatu tag spesifik seperti <h1> atau <p>. Selector ini diterapkan dengan langsung menulis tag yang diinginkan dan elemen yang ingin diganti di dalam `{}`. Contoh, diambil dari lab 4:
+1. Element selector yang menerapkan style pada suatu tag spesifik seperti `<h1>` atau `<p>`. Selector ini diterapkan dengan langsung menulis tag yang diinginkan dan elemen yang ingin diganti di dalam `{}`. Contoh, diambil dari lab 4:
 ```css
 h1 {
   color: white;

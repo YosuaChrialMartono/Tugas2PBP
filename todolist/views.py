@@ -1,7 +1,7 @@
 from multiprocessing import context
 from django.shortcuts import render
 from todolist.models import Task, Task_Form
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views import View
 
 # Create your views here.
 
@@ -25,6 +26,35 @@ def show_todolist(request):
         'last_login': request.COOKIES['last_login'],
     }
     return render(request, "todolist.html", context)
+
+@login_required(login_url='/todolist/login/')
+def show_ajax_todolist(request):
+    data_todolist = Task.objects.filter(user=request.user).values()
+    context = {
+        'item_todolist' : data_todolist,
+        'user' : request.user.username,
+        'last_login' : request.COOKIES['last_login'],
+    }
+    return render(request, "todolist_ajax.html", context)
+
+def post_todolist(request):
+    if request.method == "POST":
+       task = Task()
+       task.user = request.user
+       task.title = request.POST.get('titlevalue') 
+       task.description = request.POST.get('descriptionvalue') 
+       task.is_finished = False
+       task.save()
+
+
+class TodolistsDataView(View):
+    
+    def get(self, request, *args, **kwargs):
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            task = Task.objects.filter(user=request.user).values()
+            task_serialize = serializers.serialize('json', task)
+            return JsonResponse(task_serialize, safe=False)
+        return JsonResponse({'message' : 'Wrong Validation'})
 
 
 def show_xml(request):
@@ -88,7 +118,7 @@ def logout_user(request):
     return response
 
 
-@login_required
+@login_required(login_url='/todolist/login/')
 def create_task(request):
     form = Task_Form(request.POST or None)
     if (form.is_valid and request.method == 'POST'):
@@ -107,3 +137,5 @@ def save_task(request):
         return HttpResponseRedirect('/')
     else:
         return HttpResponseRedirect('/')
+
+

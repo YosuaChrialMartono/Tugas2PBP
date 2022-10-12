@@ -1,7 +1,7 @@
 from multiprocessing import context
 from django.shortcuts import render
 from todolist.models import Task, Task_Form
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseNotFound
 from django.core import serializers
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -45,16 +45,10 @@ def post_todolist(request):
        task.description = request.POST.get('descriptionvalue') 
        task.is_finished = False
        task.save()
-
-
-class TodolistsDataView(View):
     
-    def get(self, request, *args, **kwargs):
-        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            task = Task.objects.filter(user=request.user).values()
-            task_serialize = serializers.serialize('json', task)
-            return JsonResponse(task_serialize, safe=False)
-        return JsonResponse({'message' : 'Wrong Validation'})
+    return HttpResponseNotFound()
+
+
 
 
 def show_xml(request):
@@ -63,7 +57,7 @@ def show_xml(request):
 
 
 def show_json(request):
-    data = Task.objects.all()
+    data = Task.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 
@@ -101,7 +95,7 @@ def login_user(request):
         if user is not None:
             login(request, user)  # melakukan login terlebih dahulu
             # membuat response
-            response = HttpResponseRedirect(reverse("todolist:show_todolist"))
+            response = HttpResponseRedirect(reverse("todolist:show_ajax_todolist"))
             # membuat cookie last_login dan menambahkannya ke dalam response
             response.set_cookie('last_login', str(datetime.datetime.now()))
             return response

@@ -1,5 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>Todolist</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
 </head>
@@ -56,7 +55,7 @@
                   <label for="description" class="col-form-label">Description:</label>
                   <textarea class="form-control" id="description""></textarea>
                             </div>
-                          <button type=" submit" class="btn btn-primary">Create Task</button>
+                          <button type="submit" class="btn btn-primary">Create Task</button>
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                           </form>
                         </div>
@@ -70,39 +69,39 @@
         {% endblock content %}
     {% block scripts %}
     <script>
-      $('.btn-get-data').on('click', function () {
-        $.ajax({
-          url: $('.content-data').data('url'),
-          type: 'GET',
-          dataType: 'json',
-          success: function (resp) {
-            var html = '';
-            //loop through json array
-            $(resp).each(function (index, value) {
-              html += `<div class="col-lg-3 col-md-5 col-sm-6 col-11">`
-              html += `<div class="card mx-auto m-3" style="width: 18rem"> <div class="card-header"><b>`;
-              html += value.fields.title;
-              html += `</b></div><div class="card-body"><h6 class="card-subtitle mb-2 text-muted">`;
-              html += value.fields.date;
-              html += `</h6><p class="card-text">`
-              html += value.fields.description
-              html += "</p>"
-              if (value.fields.is_finished == true) {
-                html += `<p class="card-text">Status : Finished</p>`
-              }
-              else {
-                html += `<p class="card-text">Status : Not Finished</p>`
-              }
-              html += `<button><a href="{}">Change Status</a></button></div></div></div>`
-            })
-            $(".content-data").empty()
-            $(".content-data").html(html)
-          },
-          error: function (resp) {
-            console.log('something went wrong');
-          }
-        });
+    $('.btn-get-data').on('click', function () {
+      $.ajax({
+        url: $('.content-data').data('url'),
+        type: 'GET',
+        dataType: 'json',
+        success: function (resp) {
+          var html = '';
+          //loop through json array
+          $(resp).each(function (index, value) {
+            html += `<div class="col-lg-3 col-md-5 col-sm-6 col-11">`
+            html += `<div class="card mx-auto m-3" style="width: 18rem"> <div class="card-header"><b>`;
+            html += value.fields.title;
+            html += `</b></div><div class="card-body"><h6 class="card-subtitle mb-2 text-muted">`;
+            html += value.fields.date;
+            html += `</h6><p class="card-text">`
+            html += value.fields.description
+            html += "</p>"
+            if (value.fields.is_finished == true) {
+              html += `<p class="card-text">Status : Finished</p>`
+            }
+            else {
+              html += `<p class="card-text">Status : Not Finished</p>`
+            }
+            html += `<button><a href="{}">Change Status</a></button></div></div></div>`
+          })
+          $(".content-data").empty()
+          $(".content-data").html(html)
+        },
+        error: function (resp) {
+          console.log('something went wrong');
+        }
       });
+    });
       $('#todolistform').on('submit', function (e) {
 
         $.ajax({
@@ -114,14 +113,13 @@
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
           },
           success: function () {
-
-            alert('Data Successfully Posted');
-
+            
           },
         });
-
+        $("#createTaskModal").modal('hide');
+        return false
       });
-
+      
     </script>
     {% endblock scripts %}
 

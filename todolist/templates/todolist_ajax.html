@@ -26,7 +26,7 @@
       </nav>
     </div>
 
-    <div class="content-data row" data-url="{% url 'todolist:show_json' %}">
+    <div id ="todolistCard" class="content-data row" data-url="{% url 'todolist:show_json' %}">
     </div>
     <div class="d-flex justify-content-center mx-auto">
       <button class="btn btn-primary btn-get-data m-3">Get JSON data from Django</button>
@@ -116,10 +116,40 @@
             
           },
         });
+        refreshTodolist();
         $("#createTaskModal").modal('hide');
         return false
       });
       
+        async function getTodolist() {
+          return fetch("{% url 'todolist:show_json' %}").then((res) => res.json())
+        }
+
+        async function refreshTodolist() {
+          document.getElementById("todolistCard").innerHTML = ""
+          const todolist = await getTodolist()
+          let htmlString = `<div class="row">`
+          todolist.forEach((item) => {
+            htmlString += `\n<div class="col-lg-3 col-md-5 col-sm-6 col-11">
+		        <div class="card mx-auto m-3" style="width: 18rem"> 
+			        <div class="card-header">
+				        <b>${item.fields.title}</b>
+				      </div>
+			      <div class="card-body">
+				      <h6 class="card-subtitle mb-2 text-muted">${item.fields.date}</h6>
+				      <p class="card-text">${item.fields.description}</p>`
+            if (item.fields.is_finished == true) {
+              htmlString += `<p class="card-text">Status : Finished</p>`
+            }
+            else {
+              htmlString += `<p class="card-text">Status : Not Finished</p>`
+            }
+            htmlString += `<button><a href="{}">Change Status</a></button></div></div></div>`
+          })
+          htmlString += `</div>`
+          document.getElementById("todolistCard").innerHTML = htmlString
+        }
+        refreshTodolist()
     </script>
     {% endblock scripts %}
 
